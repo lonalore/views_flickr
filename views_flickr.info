@@ -1,7 +1,22 @@
 name = Views Flickr
-description = Views and Page Manager (CTools) integration with Flickr to list galleries and photos.
+description = Views integration with Flickr to list photosets and photos.
 core = 7.x
 package = Views
 
 dependencies[] = ctools
 dependencies[] = views
+
+configure = admin/config/services/views-flickr
+
+files[] = classes/ViewsFlickrAPIRequest.class.php
+files[] = classes/ViewsFlickrPhotosetQuery.class.php
+
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_id.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_title.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_description.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_date_create.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_date_update.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_count_views.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_count_comments.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_photos.inc
+files[] = includes/views/handlers/views_flickr_views_handler_photoset_field_cover.inc

@@ -5,3 +5,86 @@
  */
 
 
+define('VIEWS_FLICKR_DEFAULT_API_URL', 'https://api.flickr.com/services/rest/');
+define('VIEWS_FLICKR_DEFAULT_DEBUG_MODE', 1);
+
+
+/**
+ * Implements hook_permission().
+ */
+function views_flickr_permission() {
+  return array(
+    'administer views flickr' => array(
+      'title'       => t('Administer Views Flickr'),
+      'description' => t('Allow the user administer Views Flickr settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function views_flickr_menu() {
+  $items = array();
+
+  $items['admin/config/services/views-flickr'] = array(
+    'title'            => 'Views Flickr API settings',
+    'description'      => 'Allows the user to configure the Views Flickr settings',
+    'file'             => 'includes/views_flickr.admin.inc',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('views_flickr_settings_form'),
+    'access callback'  => 'user_access',
+    'access arguments' => array('administer views flickr'),
+    'type'             => MENU_NORMAL_ITEM,
+  );
+
+  $items['views-flickr/api-test'] = array(
+    'title'            => 'Views Flickr API Test',
+    'description'      => 'Allows the user to test Flickr API settings',
+    'file'             => 'includes/views_flickr.test.inc',
+    'page callback'    => 'views_flickr_api_test_page',
+    'access callback'  => 'user_access',
+    'access arguments' => array('administer views flickr'),
+    'type'             => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function views_flickr_views_api() {
+  return array(
+    'api' => 3.0,
+    'path' => drupal_get_path('module', 'views_flickr') . '/includes/views',
+  );
+}
+
+/**
+ * Returns the URL to $photo with size $size using the correct image farm
+ * from the $photo variable.
+ *
+ * @param string $photo
+ *   Photo to which the url should point.
+ * @param string $size
+ *   Size of the photo.
+ * @param string $format
+ *   Format of the photo.
+ *
+ * @return array
+ *   URL for $photo with the correct size and format.
+ */
+function views_flickr_photo_img($photo, $size = NULL, $format = NULL) {
+  // Early images don't have a farm setting so default to 1.
+  $farm = isset($photo['farm']) ? $photo['farm'] : 1;
+  $server = $photo['server'];
+  // photoset's use primary instead of id to specify the image.
+  $id = isset($photo['primary']) ? $photo['primary'] : $photo['id'];
+  $secret = $photo['secret'];
+  $suffix = $size ? "_$size." : '.';
+  $suffix = $size == '-' ? '.' : $suffix;
+  $extension = $size == 'o' ? $format : 'jpg';
+
+  return "https://farm{$farm}.static.flickr.com/{$server}/{$id}_{$secret}" . $suffix . $extension;
+}

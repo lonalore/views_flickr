@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for "views_flickr" module.
+ */
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function views_flickr_uninstall() {
+  // Delete "views_flickr" variables when module is removed.
+  variable_del('views_flickr_api_key');
+  variable_del('views_flickr_api_url');
+  variable_del('views_flickr_debug_mode');
+  variable_del('views_flickr_user_id');
+}
