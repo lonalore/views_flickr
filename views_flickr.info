@@ -1,0 +1,7 @@
+name = Views Flickr
+description = Views and Page Manager (CTools) integration with Flickr to list galleries and photos.
+core = 7.x
+package = Views
+
+dependencies[] = ctools
+dependencies[] = views
