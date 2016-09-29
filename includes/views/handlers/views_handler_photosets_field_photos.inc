@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Views field handler for Photoset Count Views field.
+ * Views field handler for Photoset Photos field.
  */
 
 
 /**
- * Class views_flickr_views_handler_photoset_field_count_views.
+ * Class views_handler_photosets_field_photos.
  */
-class views_flickr_views_handler_photoset_field_count_views extends views_handler_field {
+class views_handler_photosets_field_photos extends views_handler_field {
 
   /**
    * Initializes.
@@ -19,7 +19,7 @@ class views_flickr_views_handler_photoset_field_count_views extends views_handle
    */
   function init(&$view, &$options) {
     parent::init($view, $options);
-    $this->aliases['count_views'] = 'count_views';
+    $this->aliases['photos'] = 'photos';
   }
 
   /**
@@ -136,7 +136,7 @@ class views_flickr_views_handler_photoset_field_count_views extends views_handle
    * @return mixed
    */
   function render($values) {
-    $value = $this->get_value($values, 'count_views');
+    $value = $this->get_value($values, 'photos');
 
     if (!empty($this->options['set_precision'])) {
       $value = number_format($value, $this->options['precision'], $this->options['decimal'], $this->options['separator']);

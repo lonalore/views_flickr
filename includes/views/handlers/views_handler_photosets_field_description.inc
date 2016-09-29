@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Views field handler for Photoset ID field.
+ * Views field handler for Photoset Description field.
  */
 
 
 /**
- * Class views_flickr_views_handler_photoset_field_id.
+ * Class views_handler_photosets_field_description.
  */
-class views_flickr_views_handler_photoset_field_id extends views_handler_field {
+class views_handler_photosets_field_description extends views_handler_field {
 
   /**
    * Initializes.
@@ -19,7 +19,7 @@ class views_flickr_views_handler_photoset_field_id extends views_handler_field {
    */
   function init(&$view, &$options) {
     parent::init($view, $options);
-    $this->aliases['id'] = 'id';
+    $this->aliases['description'] = 'description';
   }
 
   /**
@@ -49,7 +49,8 @@ class views_flickr_views_handler_photoset_field_id extends views_handler_field {
    * @return mixed
    */
   function render($values) {
-    return $this->get_value($values, 'id');
+    $value = $this->get_value($values, 'description');
+    return isset($value->_content) ? $value->_content : '';
   }
 
   /**

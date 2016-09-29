@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Views field handler for Photoset Title field.
+ * Views field handler for Photoset Photo Title field.
  */
 
 
 /**
- * Class views_flickr_views_handler_photoset_field_title.
+ * Class views_handler_photosets_photos_field_title.
  */
-class views_flickr_views_handler_photoset_field_title extends views_handler_field {
+class views_handler_photosets_photos_field_title extends views_handler_field {
 
   /**
    * Initializes.

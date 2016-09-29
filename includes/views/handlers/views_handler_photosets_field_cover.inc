@@ -7,9 +7,9 @@
 
 
 /**
- * Class views_flickr_views_handler_photoset_field_cover.
+ * Class views_handler_photosets_field_cover.
  */
-class views_flickr_views_handler_photoset_field_cover extends views_handler_field {
+class views_handler_photosets_field_cover extends views_handler_field {
   
   /**
    * Initializes.

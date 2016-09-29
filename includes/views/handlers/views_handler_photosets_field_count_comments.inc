@@ -7,9 +7,9 @@
 
 
 /**
- * Class views_flickr_views_handler_photoset_field_count_comments.
+ * Class views_handler_photosets_field_count_comments.
  */
-class views_flickr_views_handler_photoset_field_count_comments extends views_handler_field {
+class views_handler_photosets_field_count_comments extends views_handler_field {
 
   /**
    * Initializes.

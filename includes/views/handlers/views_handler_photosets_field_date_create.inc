@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Views field handler for Photoset Date Update field.
+ * Views field handler for Photoset Date Create field.
  */
 
 
 /**
- * Class views_flickr_views_handler_photoset_field_date_update.
+ * Class views_handler_photosets_field_date_create.
  */
-class views_flickr_views_handler_photoset_field_date_update extends views_handler_field {
+class views_handler_photosets_field_date_create extends views_handler_field {
 
   /**
    * Initializes.
@@ -19,7 +19,7 @@ class views_flickr_views_handler_photoset_field_date_update extends views_handle
    */
   function init(&$view, &$options) {
     parent::init($view, $options);
-    $this->aliases['date_update'] = 'date_update';
+    $this->aliases['date_create'] = 'date_create';
   }
 
   /**
@@ -131,7 +131,7 @@ class views_flickr_views_handler_photoset_field_date_update extends views_handle
    * @return mixed
    */
   function render($values) {
-    $value = $this->get_value($values, 'date_update');
+    $value = $this->get_value($values, 'date_create');
     $format = $this->options['date_format'];
 
     $timezone = !empty($this->options['timezone']) ? $this->options['timezone'] : NULL;
