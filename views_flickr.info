@@ -3,6 +3,7 @@ description = Views integration with Flickr to list photosets and photos.
 core = 7.x
 package = Views
 
+dependencies[] = image
 dependencies[] = ctools
 dependencies[] = views
 
