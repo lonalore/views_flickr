@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Hooks and callback function for "views_flickr" module.
+ * Hooks and callback functions for "views_flickr" module.
  */
 
 
 define('VIEWS_FLICKR_DEFAULT_API_URL', 'https://api.flickr.com/services/rest/');
-define('VIEWS_FLICKR_DEFAULT_DEBUG_MODE', 1);
+define('VIEWS_FLICKR_DEFAULT_DEBUG_MODE', 0);
 
 
 /**
@@ -79,7 +79,7 @@ function views_flickr_photo_img($photo, $size = NULL, $format = NULL) {
   // Early images don't have a farm setting so default to 1.
   $farm = isset($photo['farm']) ? $photo['farm'] : 1;
   $server = $photo['server'];
-  // photoset's use primary instead of id to specify the image.
+  // Photoset uses primary instead of id to specify the image.
   $id = isset($photo['primary']) ? $photo['primary'] : $photo['id'];
   $secret = $photo['secret'];
   $suffix = $size ? "_$size." : '.';
