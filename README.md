@@ -1,6 +1,6 @@
 # Views Flickr (Drupal 7 module)
 
-Views integration with Flickr to list photosets and photos.
+Views integration with [Flickr](https://www.flickr.com/) to list photosets and photos.
 
 ### Features
 
@@ -14,6 +14,7 @@ Views integration with Flickr to list photosets and photos.
 - [Drupal 7](https://www.drupal.org/project/drupal)
 - [Chaos Tool Suite](https://www.drupal.org/project/ctools) module (contributed)
 - [Views 3](https://www.drupal.org/project/views) module (contributed)
+- [Flickr API Key](https://www.flickr.com/services/api/misc.api_keys.html)
 
 ### Installation and Configuration
 
