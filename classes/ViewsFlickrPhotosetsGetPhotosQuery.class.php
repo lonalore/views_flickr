@@ -70,7 +70,7 @@ class ViewsFlickrPhotosetsGetPhotosQuery extends views_plugin_query {
 
     $request = $view->build_info['views_flickr_request'];
 
-    if (isset($view->build_info['substitutions']['!1'])) {
+    if (isset($view->build_info['substitutions']['!1']) && is_numeric($view->build_info['substitutions']['!1'])) {
       $request->addArgument('photoset_id', $view->build_info['substitutions']['!1']);
     }
 

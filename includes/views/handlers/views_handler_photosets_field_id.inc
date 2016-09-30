@@ -59,7 +59,7 @@ class views_handler_photosets_field_id extends views_handler_field {
   function render_link($data, $values) {
     if (!empty($this->options['link_to_photoset']) && $data !== NULL && $data !== '') {
       $this->options['alter']['make_link'] = TRUE;
-      $this->options['alter']['path'] = "photoset/" . $this->get_value($values, 'id');
+      $this->options['alter']['path'] = "photosets/" . $this->get_value($values, 'id');
     }
 
     return $data;

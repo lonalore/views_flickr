@@ -84,32 +84,32 @@ class ViewsFlickrAPIRequest {
     $response = drupal_http_request($request_url);
 
     if ($response->code != 200) {
-      watchdog('views_flickr', 'HTTP error !code received.', array(
+      drupal_set_message(t('HTTP error !code received.', array(
         '!code' => $response->code,
-      ), WATCHDOG_ERROR);
+      )), 'error');
       return FALSE;
     }
 
     $data = json_decode($response->data);
-    
+
     if (!is_object($data)) {
-      watchdog('views_flickr', 'Did not receive valid API response (invalid JSON).', array(), WATCHDOG_ERROR);
+      drupal_set_message(t('Did not receive valid API response (invalid JSON).'), 'error');
       return FALSE;
     }
 
     if (isset($data->error)) {
-      watchdog('views_flickr', 'Error !code received: %message', array(
+      drupal_set_message(t('Error !code received: %message', array(
         '!code'    => $data->error,
         '%message' => $data->message,
-      ), WATCHDOG_ERROR);
+      )), 'error');
       return FALSE;
     }
 
     if (isset($data->stat) && $data->stat == 'fail') {
-      watchdog('views_flickr', 'Error !code received: %message', array(
+      drupal_set_message(t('Error !code received: %message', array(
         '!code'    => $data->code,
         '%message' => $data->message,
-      ), WATCHDOG_ERROR);
+      )), 'error');
       return FALSE;
     }
 

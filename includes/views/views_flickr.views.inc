@@ -252,60 +252,25 @@ function views_flickr_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'id',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
+  $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Views Flickr: ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  $handler->display->display_options['fields']['id']['link_to_photoset'] = 1;
-  /* Field: Views Flickr: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['link_to_photoset'] = 1;
-  /* Field: Views Flickr: Description */
-  $handler->display->display_options['fields']['description']['id'] = 'description';
-  $handler->display->display_options['fields']['description']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['description']['field'] = 'description';
-  /* Field: Views Flickr: Count comments */
-  $handler->display->display_options['fields']['count_comments']['id'] = 'count_comments';
-  $handler->display->display_options['fields']['count_comments']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['count_comments']['field'] = 'count_comments';
-  $handler->display->display_options['fields']['count_comments']['precision'] = '0';
-  /* Field: Views Flickr: Count views */
-  $handler->display->display_options['fields']['count_views']['id'] = 'count_views';
-  $handler->display->display_options['fields']['count_views']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['count_views']['field'] = 'count_views';
-  $handler->display->display_options['fields']['count_views']['precision'] = '0';
-  /* Field: Views Flickr: Photos */
-  $handler->display->display_options['fields']['photos']['id'] = 'photos';
-  $handler->display->display_options['fields']['photos']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['photos']['field'] = 'photos';
-  $handler->display->display_options['fields']['photos']['precision'] = '0';
-  /* Field: Views Flickr: Created */
-  $handler->display->display_options['fields']['date_create']['id'] = 'date_create';
-  $handler->display->display_options['fields']['date_create']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['date_create']['field'] = 'date_create';
-  $handler->display->display_options['fields']['date_create']['date_format'] = 'long';
-  $handler->display->display_options['fields']['date_create']['second_date_format'] = 'long';
-  /* Field: Views Flickr: Updated */
-  $handler->display->display_options['fields']['date_update']['id'] = 'date_update';
-  $handler->display->display_options['fields']['date_update']['table'] = 'views_flickr_photosets';
-  $handler->display->display_options['fields']['date_update']['field'] = 'date_update';
-  $handler->display->display_options['fields']['date_update']['date_format'] = 'long';
-  $handler->display->display_options['fields']['date_update']['second_date_format'] = 'long';
   /* Field: Views Flickr: Cover photo */
   $handler->display->display_options['fields']['cover']['id'] = 'cover';
   $handler->display->display_options['fields']['cover']['table'] = 'views_flickr_photosets';
   $handler->display->display_options['fields']['cover']['field'] = 'cover';
+  $handler->display->display_options['fields']['cover']['label'] = '';
+  $handler->display->display_options['fields']['cover']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['cover']['size'] = 'imagecache_external';
+  $handler->display->display_options['fields']['cover']['image_style'] = 'medium';
+  $handler->display->display_options['fields']['cover']['use_colorbox'] = '0';
+  $handler->display->display_options['fields']['cover']['link_to_photoset'] = 1;
+  /* Field: Views Flickr: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'views_flickr_photosets';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_photoset'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -326,17 +291,6 @@ function views_flickr_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('ID'),
-    t('Title'),
-    t('Description'),
-    t('Count comments'),
-    t('.'),
-    t(','),
-    t('Count views'),
-    t('Photos'),
-    t('Created'),
-    t('Updated'),
-    t('Cover photo'),
     t('Page'),
   );
 
@@ -355,16 +309,16 @@ function views_flickr_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Flickr Photoset Photos';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'mini';
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Views Flickr: Photo */
@@ -373,10 +327,13 @@ function views_flickr_views_default_views() {
   $handler->display->display_options['fields']['photo']['field'] = 'photo';
   $handler->display->display_options['fields']['photo']['label'] = '';
   $handler->display->display_options['fields']['photo']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['photo']['size'] = 'm';
+  $handler->display->display_options['fields']['photo']['size'] = 'imagecache_external';
+  $handler->display->display_options['fields']['photo']['image_style'] = 'medium';
+  $handler->display->display_options['fields']['photo']['use_colorbox'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
@@ -388,7 +345,9 @@ function views_flickr_views_default_views() {
   $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['path'] = 'photoset/%';
+  $handler->display->display_options['arguments']['null']['validate']['type'] = 'numeric';
+  $handler->display->display_options['arguments']['null']['validate']['fail'] = 'empty';
+  $handler->display->display_options['path'] = 'photosets/%';
   $translatables['flickr_photoset_photos'] = array(
     t('Master'),
     t('Flickr Photoset Photos'),

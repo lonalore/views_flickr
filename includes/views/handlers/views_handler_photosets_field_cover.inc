@@ -34,6 +34,7 @@ class views_handler_photosets_field_cover extends views_handler_field {
     $options['format'] = array('default' => 'jpg');
     $options['image_style'] = array('default' => 'thumbnail');
     $options['use_colorbox'] = array('default' => 0);
+    $options['link_to_photoset'] = array('default' => FALSE);
 
     return $options;
   }
@@ -124,6 +125,18 @@ class views_handler_photosets_field_cover extends views_handler_field {
       '#default_value' => isset($this->options['format']) ? $this->options['format'] : 'jpg',
     );
 
+    $form['link_to_photoset'] = array(
+      '#title'         => t('Link this field to the Photoset page.'),
+      '#description'   => t("Enable to override this field's links."),
+      '#type'          => 'checkbox',
+      '#default_value' => !empty($this->options['link_to_photoset']),
+      '#states'        => array(
+        'visible' => array(
+          '#edit-options-use-colorbox' => array('value' => 0),
+        ),
+      ),
+    );
+
     parent::options_form($form, $form_state);
   }
 
@@ -175,6 +188,12 @@ class views_handler_photosets_field_cover extends views_handler_field {
           ),
           'rel'   => 'colorbox',
         ),
+      ));
+    }
+
+    if (!empty($this->options['link_to_photoset'])) {
+      return l($image, 'photosets/' . check_plain($values->id), array(
+        'html' => TRUE,
       ));
     }
 
