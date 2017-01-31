@@ -29,3 +29,8 @@ git clone https://github.com/lonalore/views_flickr.git views_flickr
 - Visit Photosets page at ``http://yoursite.com/photosets``
 
 If you want to use Drupal Image Styles, you'll need to install [imagecache_external](http://drupal.org/project/imagecache_external) module.
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/lonalore/views_flickr/badge.svg?style=beer-square)](https://beerpay.io/lonalore/views_flickr)  [![Beerpay](https://beerpay.io/lonalore/views_flickr/make-wish.svg?style=flat-square)](https://beerpay.io/lonalore/views_flickr?focus=wish)
